@@ -1,0 +1,76 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PostEntity {
+  id: Int!
+  blog: BlogEntity!
+  content: String!
+}
+
+type UserEntity {
+  id: Int!
+  name: String!
+  role: String!
+  blogs: [BlogEntity!]
+}
+
+type BlogEntity {
+  id: Int!
+  name: String!
+  posts: [PostEntity!]
+  user: UserEntity!
+  blogPosts: [PostEntity!]!
+  blogUser: [UserEntity!]!
+}
+
+type Query {
+  blogs: [BlogEntity!]!
+  blogsUser(userId: Int!): [BlogEntity!]!
+  blog(id: Int!): BlogEntity
+}
+
+type Mutation {
+  createBlog(createBlogInput: CreateBlogInput!): BlogEntity
+  updateBlog(updateBlogInput: UpdateBlogInput!): Boolean!
+  removeBlog(id: Int!): Boolean!
+  createUser(createUserInput: CreateUserInput!): UserEntity!
+  updateUser(updateUserInput: UpdateUserInput!): Boolean!
+  removeUser(id: Int!): UserEntity!
+  createPost(createPostInput: CreatePostInput!): PostEntity!
+  updatePost(updatePostInput: UpdatePostInput!): Boolean!
+  removePost(id: Int!): Boolean!
+}
+
+input CreateBlogInput {
+  name: String!
+  userId: Float!
+}
+
+input UpdateBlogInput {
+  name: String
+  userId: Float
+  id: Float!
+}
+
+input CreateUserInput {
+  name: String!
+  role: String!
+}
+
+input UpdateUserInput {
+  name: String
+  role: String
+  id: Int!
+}
+
+input CreatePostInput {
+  blogId: Float!
+  content: String!
+}
+
+input UpdatePostInput {
+  blogId: Float
+  content: String
+  id: Int!
+}
